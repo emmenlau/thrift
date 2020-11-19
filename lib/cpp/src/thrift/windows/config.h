@@ -70,6 +70,13 @@
   #pragma comment(lib, "advapi32.lib") // For security APIs in TPipeServer
   #pragma comment(lib, "Shlwapi.lib")  // For StrStrIA in TPipeServer
   #endif
+
+  // Windows 10 SDK provides <afunix.h>
+  #include <ntverp.h>
+  #if (VER_PRODUCTBUILD >= 10011)
+  #define HAVE_AF_UNIX_H 1
+  #endif
+
 #endif // __MINGW32__
 
 #endif // _THRIFT_WINDOWS_CONFIG_H_
